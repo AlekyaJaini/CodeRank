@@ -1,5 +1,6 @@
 package org.example.coderank.controller;
 
+import jakarta.validation.Valid;
 import org.example.coderank.model.Submission;
 import org.example.coderank.service.SubmissionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class SubmissionController {
     }
     
     @PostMapping
-    public ResponseEntity<Submission> createSubmission(@RequestBody Submission submission) {
+    public ResponseEntity<Submission> createSubmission(@Valid @RequestBody Submission submission) {
         Submission createdSubmission = submissionService.createSubmission(submission);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdSubmission);
     }

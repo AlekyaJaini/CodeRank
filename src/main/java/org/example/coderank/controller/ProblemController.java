@@ -1,5 +1,6 @@
 package org.example.coderank.controller;
 
+import jakarta.validation.Valid;
 import org.example.coderank.model.Problem;
 import org.example.coderank.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,13 +47,13 @@ public class ProblemController {
     }
     
     @PostMapping
-    public ResponseEntity<Problem> createProblem(@RequestBody Problem problem) {
+    public ResponseEntity<Problem> createProblem(@Valid @RequestBody Problem problem) {
         Problem createdProblem = problemService.createProblem(problem);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProblem);
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Problem> updateProblem(@PathVariable Long id, @RequestBody Problem problem) {
+    public ResponseEntity<Problem> updateProblem(@PathVariable Long id, @Valid @RequestBody Problem problem) {
         try {
             Problem updatedProblem = problemService.updateProblem(id, problem);
             return ResponseEntity.ok(updatedProblem);

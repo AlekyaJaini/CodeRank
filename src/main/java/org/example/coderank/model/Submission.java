@@ -1,6 +1,8 @@
 package org.example.coderank.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,15 +19,19 @@ public class Submission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @NotNull(message = "Problem ID is required")
     @Column(name = "problem_id", nullable = false)
     private Long problemId;
     
+    @NotNull(message = "User ID is required")
     @Column(name = "user_id", nullable = false)
     private Long userId;
     
+    @NotBlank(message = "Code is required")
     @Column(nullable = false, columnDefinition = "TEXT")
     private String code;
     
+    @NotBlank(message = "Language is required")
     @Column(nullable = false)
     private String language;
     
