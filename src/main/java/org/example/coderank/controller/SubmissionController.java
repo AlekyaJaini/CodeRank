@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.example.coderank.dto.SubmsissionRequestDTO;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/submissions")
@@ -22,7 +24,7 @@ public class SubmissionController {
     }
     
     @PostMapping
-    public ResponseEntity<Submission> createSubmission(@Valid @RequestBody Submission submission) {
+    public ResponseEntity<Submission> createSubmission(@Valid @RequestBody SubmsissionRequestDTO submission) {
         Submission createdSubmission = submissionService.createSubmission(submission);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdSubmission);
     }
@@ -30,7 +32,7 @@ public class SubmissionController {
     @GetMapping
     public ResponseEntity<List<Submission>> getAllSubmissions(
             @RequestParam(required = false) Long userId,
-            @RequestParam(required = false) Long problemId,
+            @RequestParam(required = false) UUID problemId,
             @RequestParam(required = false) String status) {
         
         List<Submission> submissions;
