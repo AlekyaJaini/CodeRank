@@ -37,6 +37,7 @@ public class SubmissionWorker {
 
             sub.setStatus(result.getStatus());
             sub.setOutput(truncate(result.getStdout(), 100000)); // avoid huge blobs
+            //check hereeee
             sub.setErr(truncate(result.getStderr(), 100000));
             sub.setExecTimeMs(result.getExecTimeMs());
             sub.setFinishedAt(Instant.now());

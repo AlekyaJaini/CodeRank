@@ -91,4 +91,9 @@ public class SubmissionService {
     public List<Submission> getSubmissionsByStatus(String status) {
         return submissionRepository.findByStatus(status);
     }
+
+    public Optional<Submission> findById(Long id) {
+        System.out.println("=========Finding submission by id=========: " + id);
+        return submissionRepository.findById(id);
+    }
 }
