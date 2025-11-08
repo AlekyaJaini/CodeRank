@@ -10,10 +10,6 @@ import java.util.UUID;
 
 @Repository
 public interface ProblemRepository extends JpaRepository<Problem, UUID> {
-    
-   // List<Problem> findByDifficulty(String difficulty);
-    
-    //List<Problem> findByTitleContainingIgnoreCase(String title);
 
     boolean existsByExternalId(Integer externalId);
     Optional<Problem> findByExternalId(Integer externalId);

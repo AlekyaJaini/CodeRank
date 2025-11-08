@@ -33,13 +33,6 @@ public class Submission {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-//    @NotNull(message = "Problem ID is required")
-//    @Column(name = "problem_id", nullable = false)
-//    private UUID problemId;
-    
-//    @NotNull(message = "User ID is required")
-//    @Column(name = "user_id", nullable = false)
-//    private Long userId;
     
     @NotBlank(message = "Code is required")
     @Column(nullable = false, columnDefinition = "TEXT")
@@ -51,10 +44,7 @@ public class Submission {
     
     @Column(nullable = false)
     private String status;
-//
-//    @Column(name = "execution_time")
-//    private Integer executionTime;
-//
+
     @Column
     private String output;
 
@@ -77,9 +67,5 @@ public class Submission {
 
     private Integer runtimeMs;  // execution time in ms
     private Integer memoryKb;   // memory used in KB
-    
-//    @PrePersist
-//    protected void onCreate() {
-//        submittedAt = LocalDateTime.now();
-//    }
+
 }

@@ -13,10 +13,6 @@ import java.time.Instant;
 @Entity
 @Table(
         name = "users"
-//        indexes = {
-//                @Index(name = "idx_user_username", columnList = "username"),
-//                @Index(name = "idx_user_email", columnList = "email")
-       // }
 )
 @Data
 @NoArgsConstructor

@@ -33,34 +33,5 @@ public class ProblemService {
     public Optional<Problem> getProblemById(Integer id) {
         return problemRepository.findByExternalId(id);
     }
-//
-//    public List<Problem> getProblemsByDifficulty(String difficulty) {
-//        return problemRepository.findByDifficulty(difficulty);
-//    }
-//
-//    public List<Problem> searchProblemsByTitle(String title) {
-//        return problemRepository.findByTitleContainingIgnoreCase(title);
-//    }
-//
-//    public Problem createProblem(Problem problem) {
-//        return problemRepository.save(problem);
-//    }
-//
-//    public Problem updateProblem(Long id, Problem problemDetails) {
-//        Problem problem = problemRepository.findById(id)
-//                .orElseThrow(() -> new RuntimeException("Problem not found with id: " + id));
-//
-//        problem.setTitle(problemDetails.getTitle());
-//        problem.setDescription(problemDetails.getDescription());
-//        problem.setDifficulty(problemDetails.getDifficulty());
-//        problem.setAcceptanceRate(problemDetails.getAcceptanceRate());
-//        problem.setTestCases(problemDetails.getTestCases());
-//        problem.setConstraints(problemDetails.getConstraints());
-//
-//        return problemRepository.save(problem);
-//    }
-//
-//    public void deleteProblem(Long id) {
-//        problemRepository.deleteById(id);
-//    }
+
 }

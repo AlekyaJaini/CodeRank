@@ -21,14 +21,11 @@ public class CodeExecutionService {
     public ExecutionResult executeSubmission(Submission submission) {
         ExecLanguage lang = ExecLanguage.fromCode(submission.getLanguage());
         String source = submission.getCode();
-
-        //String stdin = submission.getStdin();
         String stdin = submission.getStdin();
         if (stdin == null) stdin = "";
         stdin = stdin.trim();
         if (!stdin.endsWith("\n")) stdin = stdin + "\n";
         String stdinB64 = Base64.getEncoder().encodeToString(stdin.getBytes(StandardCharsets.UTF_8));
-        System.out.println("Executing submission id: " + submission.getId() + " in language: " + lang + "stdin + stdin");
         return dockerRunner.run(lang, source, stdin);
     }
 }

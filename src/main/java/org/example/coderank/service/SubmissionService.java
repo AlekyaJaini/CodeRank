@@ -12,8 +12,6 @@ import org.example.coderank.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.util.concurrent.ListenableFutureCallback;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -41,16 +39,8 @@ public class SubmissionService {
 
 
     public Submission createSubmission(SubmsissionRequestDTO submissiondto) {
-        // Here you would typically add code execution logic
-        // For now, we'll just save the submission with a default status
-//        if (submission.getStatus() == null) {
-//            submission.setStatus("PENDING");
-//        }
-
 
         Optional user = userRepository.findById(Long.valueOf(submissiondto.getUserId()));
-//                .orElseThrow(() -> new ResourceNotFoundException(
-//                        "User not found with id: " + submissiondto.getUserId()));
 
         Problem problem = problemRepository.findById(submissiondto.getProblemId())
                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -93,7 +83,6 @@ public class SubmissionService {
     }
 
     public Optional<Submission> findById(Long id) {
-        System.out.println("=========Finding submission by id=========: " + id);
         return submissionRepository.findById(id);
     }
 }

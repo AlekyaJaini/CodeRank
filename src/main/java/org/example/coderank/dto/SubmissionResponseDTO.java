@@ -14,6 +14,4 @@ public class SubmissionResponseDTO {
     private Long execTimeMs;
     private Instant createdAt;
     private Instant finishedAt;
-    // plus problem/user minimal info if needed
-    // getters/setters/constructors
 }

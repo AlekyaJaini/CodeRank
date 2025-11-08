@@ -25,23 +25,16 @@ public class SubmissionWorker {
 @Transactional
     public void onMessage(String submissionIdStr) {
         long id = Long.parseLong(submissionIdStr);
-        //long id1=11;
         submissionRepository.findById(id).ifPresent(sub -> {
             if (!"PENDING".equals(sub.getStatus())) return; // idempotency
             sub.setStatus("RUNNING");
             submissionRepository.save(sub);
-            System.out.println("================");
-            System.out.println("Processing submission id ===saved: " + id);
-            System.out.println("================");
             ExecutionResult result = executionService.executeSubmission(sub);
-
             sub.setStatus(result.getStatus());
             sub.setOutput(truncate(result.getStdout(), 100000)); // avoid huge blobs
-            //check hereeee
             sub.setErr(truncate(result.getStderr(), 100000));
             sub.setExecTimeMs(result.getExecTimeMs());
             sub.setFinishedAt(Instant.now());
-            System.out.println("=============saved===========");
             submissionRepository.save(sub);
         });
     }
