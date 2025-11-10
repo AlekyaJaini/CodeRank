@@ -4,7 +4,7 @@ This project is built with Spring Boot, persists data in PostgreSQL, uses Kafka 
 ## Features
 
 - Problem management 
-- -Submit code payloads (submissions persisted)
+- Submit code payloads (submissions persisted)
  -Submission processing pipeline (status flow; Kafka integration present)
  -PostgreSQL persistence
   -Docker + Compose setup for local dev (includes Kafka/Zookeeper if enabled in compose)
@@ -18,7 +18,7 @@ This project is built with Spring Boot, persists data in PostgreSQL, uses Kafka 
 ├─ Dockerfile
 ├─ pom.xml
 ├─ API_SUMMARY.md
-└─ README.md  (replace with this file)
+└─ README.md 
 
 
 ## Technologies Used
