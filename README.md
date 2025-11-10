@@ -2,12 +2,17 @@
 CodeRank is a Coding platform providing REST APIs for problem management and submission evaluation.  
 This project is built with Spring Boot, persists data in PostgreSQL, uses Kafka for submission/event flow, and is dockerized for local development.
 ## Features
-
 - Problem management 
 - Submit code payloads (submissions persisted)
- -Submission processing pipeline (status flow; Kafka integration present)
- -PostgreSQL persistence
-  -Docker + Compose setup for local dev (includes Kafka/Zookeeper if enabled in compose)
+- Submission processing pipeline (status flow; Kafka integration present)
+-  PostgreSQL persistence
+-  Docker + Compose setup for local dev (includes Kafka/Zookeeper if enabled in compose)
+
+  
+# CodeRank Demo
+https://github.com/user-attachments/assets/06ded191-17bb-4f55-8918-525a7b9b07e1
+
+https://github.com/user-attachments/assets/7c3c20c0-544e-4487-b8c1-7d7f057b8f6d
 
 **  Project Layout**
 
