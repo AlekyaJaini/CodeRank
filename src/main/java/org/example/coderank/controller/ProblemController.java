@@ -29,11 +29,7 @@ public class ProblemController {
             @RequestParam(required = false) String search, Pageable pageable) {
 
         List<Problem> problems;
-
-
         Page<ProblemListDTO> page = problemService.getAllProblems(pageable);
-
-
         return ResponseEntity.ok(page);
     }
 
