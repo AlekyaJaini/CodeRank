@@ -1,5 +1,5 @@
-# CodeRank API
-Coding platform backend providing REST APIs for problem management and submission evaluation.  
+# CodeRank
+CodeRank is a Coding platform providing REST APIs for problem management and submission evaluation.  
 This project is built with Spring Boot, persists data in PostgreSQL, uses Kafka for submission/event flow, and is dockerized for local development.
 ## Features
 
