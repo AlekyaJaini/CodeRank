@@ -1,13 +1,25 @@
 # CodeRank API
-
-A LeetCode-style coding platform with RESTful APIs built using Spring Boot and PostgreSQL.
-
+Coding platform backend providing REST APIs for problem management and submission evaluation.  
+This project is built with Spring Boot, persists data in PostgreSQL, uses Kafka for submission/event flow, and is dockerized for local development.
 ## Features
 
-- Problem management (CRUD operations)
-- Submission tracking and management
-- PostgreSQL database integration
-- RESTful API endpoints
+- Problem management 
+- -Submit code payloads (submissions persisted)
+ -Submission processing pipeline (status flow; Kafka integration present)
+ -PostgreSQL persistence
+  -Docker + Compose setup for local dev (includes Kafka/Zookeeper if enabled in compose)
+
+**  Project Layout**
+
+  CodeRank/
+├─ src/main/java/org/example/coderank/controller/ 
+├─ src/main/resources/application.properties
+├─ docker-compose.yml
+├─ Dockerfile
+├─ pom.xml
+├─ API_SUMMARY.md
+└─ README.md  (replace with this file)
+
 
 ## Technologies Used
 
@@ -19,24 +31,23 @@ A LeetCode-style coding platform with RESTful APIs built using Spring Boot and P
 - Maven
 
 ## Prerequisites
-
+ -Docker & Docker Compose
 - Java 21 or higher
 - Maven 3.6+
 - PostgreSQL 12 or higher
 
-## Database Setup
+## Configuration
 
-1. Install PostgreSQL if not already installed
-2. Create a database named `coderank`:
-```sql
-CREATE DATABASE coderank;
-```
 
-3. Update database credentials in `src/main/resources/application.properties` if needed:
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/coderank
-spring.datasource.username=postgres
-spring.datasource.password=postgres
+Default config is in src/main/resources/application.properties. Important keys (can be provided as environment variables in Docker or your runtime):
+
+Database:
+
+spring.datasource.url (default in file: jdbc:postgresql://localhost:5432/coderank)
+
+Kafka:
+
+SPRING_KAFKA_BOOTSTRAP_SERVERS (default in properties: kafka:9092)
 ```
 
 ## Building the Application
@@ -47,29 +58,26 @@ mvn clean package
 
 ## Running the Application
 
-```bash
-mvn spring-boot:run
-```
+docker-compose up --build
 
-Or run the JAR file:
-```bash
-java -jar target/CodeRank-1.0-SNAPSHOT.jar
-```
+The included docker-compose.yml in the repo configures DB (Postgres) and Kafka/Zookeeper services (if present).
 
-The application will start on `http://localhost:8080`
+Compose will start the backend application and required infrastructure.
 
+To rebuild after code change:
+
+docker-compose build backend
+docker-compose up -d
+
+docker-compose up --build
 ## API Endpoints
 
-### Problems API
+Base URL: http://localhost:8080
 
 #### Get All Problems
 ```http
 GET /problems
 ```
-
-**Query Parameters:**
-- `difficulty` (optional): Filter by difficulty level (e.g., Easy, Medium, Hard)
-- `search` (optional): Search problems by title
 
 **Example:**
 ```bash
