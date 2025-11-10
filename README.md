@@ -101,7 +101,7 @@ Content-Type: application/json
 
 **Request Body:**
 ```json
-{=
+
 {
   "language": "java",
   "code":"import java.util.*; public class Main { public static void main(String[] args){  System.out.println(\"Hello from Code Rank-java \"); } }",
@@ -111,19 +111,6 @@ Content-Type: application/json
 
 }
 
-**Example:**
-```bash
-curl -X POST http://localhost:8080/problems \
-  -H "Content-Type: application/json" \
-  -d '{
-    "title": "Two Sum",
-    "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
-    "difficulty": "Easy",
-    "acceptanceRate": 49.5,
-    "testCases": "[{\"input\": \"[2,7,11,15], 9\", \"output\": \"[0,1]\"}]",
-    "constraints": "2 <= nums.length <= 10^4"
-  }'
-```
 
 ### Submissions API
 
