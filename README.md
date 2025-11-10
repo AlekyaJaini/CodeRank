@@ -93,28 +93,8 @@ GET /problems/{id}
 curl http://localhost:8080/problems/1
 ```
 
-#### Create Problem
-```http
-POST /problems
-Content-Type: application/json
-```
 
-**Request Body:**
-```json
-
-{
-  "language": "java",
-  "code":"import java.util.*; public class Main { public static void main(String[] args){  System.out.println(\"Hello from Code Rank-java \"); } }",
-  "stdin": "",
-  "problemId":"330c946c-c68a-40b6-9dcb-cc2c3dd61478",
-  "userId":2
-
-}
-
-
-### Submissions API
-
-#### Submit Solution
+**Submit Solution**
 ```http
 POST /submissions
 Content-Type: application/json
@@ -174,9 +154,6 @@ The application follows a layered architecture:
 ```
 
 ## Future Enhancements
-
-- Code execution engine integration
-- User authentication and authorization
 - Test case validation
 - Leaderboard and ranking system
 - Discussion forum
