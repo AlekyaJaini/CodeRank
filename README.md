@@ -31,7 +31,7 @@ This project is built with Spring Boot, persists data in PostgreSQL, uses Kafka 
 - Maven
 
 ## Prerequisites
- -Docker & Docker Compose
+ - Docker & Docker Compose
 - Java 21 or higher
 - Maven 3.6+
 - PostgreSQL 12 or higher
@@ -82,9 +82,6 @@ GET /problems
 **Example:**
 ```bash
 curl http://localhost:8080/problems
-curl http://localhost:8080/problems?difficulty=Easy
-curl http://localhost:8080/problems?search=array
-```
 
 #### Get Problem by ID
 ```http
@@ -104,15 +101,15 @@ Content-Type: application/json
 
 **Request Body:**
 ```json
+{=
 {
-  "title": "Two Sum",
-  "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
-  "difficulty": "Easy",
-  "acceptanceRate": 49.5,
-  "testCases": "[{\"input\": \"[2,7,11,15], 9\", \"output\": \"[0,1]\"}]",
-  "constraints": "2 <= nums.length <= 10^4"
+  "language": "java",
+  "code":"import java.util.*; public class Main { public static void main(String[] args){  System.out.println(\"Hello from Code Rank-java \"); } }",
+  "stdin": "",
+  "problemId":"330c946c-c68a-40b6-9dcb-cc2c3dd61478",
+  "userId":2
+
 }
-```
 
 **Example:**
 ```bash
@@ -126,17 +123,6 @@ curl -X POST http://localhost:8080/problems \
     "testCases": "[{\"input\": \"[2,7,11,15], 9\", \"output\": \"[0,1]\"}]",
     "constraints": "2 <= nums.length <= 10^4"
   }'
-```
-
-#### Update Problem
-```http
-PUT /problems/{id}
-Content-Type: application/json
-```
-
-#### Delete Problem
-```http
-DELETE /problems/{id}
 ```
 
 ### Submissions API
@@ -158,46 +144,6 @@ Content-Type: application/json
 }
 ```
 
-**Example:**
-```bash
-curl -X POST http://localhost:8080/submissions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "problemId": 1,
-    "userId": 123,
-    "code": "class Solution { public int[] twoSum(int[] nums, int target) { return new int[]{0,1}; } }",
-    "language": "Java",
-    "status": "PENDING"
-  }'
-```
-
-#### Get All Submissions
-```http
-GET /submissions
-```
-
-**Query Parameters:**
-- `userId` (optional): Filter by user ID
-- `problemId` (optional): Filter by problem ID
-- `status` (optional): Filter by status (e.g., PENDING, ACCEPTED, WRONG_ANSWER)
-
-**Example:**
-```bash
-curl http://localhost:8080/submissions
-curl http://localhost:8080/submissions?userId=123
-curl http://localhost:8080/submissions?problemId=1
-curl http://localhost:8080/submissions?status=ACCEPTED
-```
-
-#### Get Submission by ID
-```http
-GET /submissions/{id}
-```
-
-**Example:**
-```bash
-curl http://localhost:8080/submissions/1
-```
 
 ## Database Schema
 
