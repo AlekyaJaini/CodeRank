@@ -1,0 +1,45 @@
+[
+  {
+    "externalId": 101,
+    "title": "Two Sum",
+    "level": "easy",
+    "description": "Given an array of integers nums and a target, return indices of the two numbers such that they add up to target.\nExample:\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]",
+    "timeLimitMs": 1000,
+    "memoryLimitKb": 65536,
+    "constraints": "2 <= nums.length <= 10^5; -10^9 <= nums[i] <= 10^9; -10^9 <= target <= 10^9; exactly one valid answer exists.",
+    "testcases": [
+      { "id": "tc-001-1", "input": "2 7 11 15\n9", "expectedOutput": "[0,1]", "isHidden": false },
+      { "id": "tc-001-2", "input": "3 2 4\n6", "expectedOutput": "[1,2]", "isHidden": false },
+      { "id": "tc-001-3", "input": "3 3\n6", "expectedOutput": "[0,1]", "isHidden": true }
+    ]
+  },
+  {
+    "externalId": 102,
+    "title": "Reverse String",
+    "level": "easy",
+    "description": "Write a function that reverses a string.\nExample:\nInput: hello\nOutput: olleh",
+    "timeLimitMs": 500,
+    "memoryLimitKb": 32768,
+    "constraints": "1 <= s.length <= 10^5; s consists of printable ASCII characters; do the reversal in-place if possible.",
+    "testcases": [
+      { "id": "tc-002-1", "input": "hello", "expectedOutput": "olleh", "isHidden": false },
+      { "id": "tc-002-2", "input": "a", "expectedOutput": "a", "isHidden": false },
+      { "id": "tc-002-3", "input": "racecar", "expectedOutput": "racecar", "isHidden": true }
+    ]
+  },
+  {
+    "externalId": 103,
+    "title": "Valid Parentheses",
+    "level": "easy",
+    "description": "Given a string containing '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+    "timeLimitMs": 1000,
+    "memoryLimitKb": 65536,
+    "constraints": "1 <= s.length <= 10^4; s only contains '(', ')', '{', '}', '[' and ']'; stack-based O(n) time and O(n) space expected.",
+    "testcases": [
+      { "id": "tc-003-1", "input": "()", "expectedOutput": "true", "isHidden": false },
+      { "id": "tc-003-2", "input": "()[]{}", "expectedOutput": "true", "isHidden": false },
+      { "id": "tc-003-3", "input": "(]", "expectedOutput": "false", "isHidden": true }
+    ]
+  }
+
+]
