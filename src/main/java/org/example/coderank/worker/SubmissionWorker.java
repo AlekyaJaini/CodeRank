@@ -29,9 +29,10 @@ public class SubmissionWorker {
             if (!"PENDING".equals(sub.getStatus())) return; // idempotency
             sub.setStatus("RUNNING");
             submissionRepository.save(sub);
+            //step-1
             ExecutionResult result = executionService.executeSubmission(sub);
             sub.setStatus(result.getStatus());
-            sub.setOutput(truncate(result.getStdout(), 100000)); // avoid huge blobs
+            sub.setOutput(truncate(result.getStdout().trim(), 100000)); // avoid huge blobs
             sub.setErr(truncate(result.getStderr(), 100000));
             sub.setExecTimeMs(result.getExecTimeMs());
             sub.setFinishedAt(Instant.now());

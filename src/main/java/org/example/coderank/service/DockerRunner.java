@@ -48,10 +48,17 @@ public class DockerRunner {
             createCmd.add("-u"); createCmd.add(runnerUser);
             createCmd.add("-e"); createCmd.add("SRC_B64=" + srcB64);
             createCmd.add("-e"); createCmd.add("STDIN_B64=" + stdinB64);
+            createCmd.add("-e"); createCmd.add("EXEC_LANG=" + lang.name());
+            createCmd.add("-e");createCmd.add("EXEC_LANG_CODE=" + lang.getCode());
             createCmd.add("--memory"); createCmd.add(memoryLimit + "m");
             createCmd.add("--cpus"); createCmd.add(cpuQuota);
             createCmd.add(lang.getImage());
-
+            if (lang.getRunCmd() != null && lang.getRunCmd().length > 0) {
+                String runCmdJoined = String.join(" ", lang.getRunCmd());
+                createCmd.add("-e");
+                createCmd.add("RUN_CMD=" + runCmdJoined);
+            }
+            System.out.println(String.join(" ", createCmd));
             Process create = new ProcessBuilder(createCmd).start();
             create.waitFor(5, TimeUnit.SECONDS);
             if (create.exitValue() != 0) {
@@ -86,8 +93,8 @@ public class DockerRunner {
             int exitCode = 0;
             try { exitCode = Integer.parseInt(exitCodeStr); } catch (Exception ignore) {}
 
-            // 4️⃣ docker logs (collect stdout/stderr)
-            Process logsProc = new ProcessBuilder("docker", "logs", cname).start();
+            // 4️⃣ docker logs (collect stdout/stderr)x
+            Process logsProc = new ProcessBuilder("docker", "logs", cname).redirectErrorStream(true).start();
             logsProc.waitFor(5, TimeUnit.SECONDS);
             String logs = new String(logsProc.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
 

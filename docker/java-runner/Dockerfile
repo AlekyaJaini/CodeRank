@@ -10,7 +10,7 @@ RUN mkdir -p /sandbox && chown 10001:10001 /sandbox
 RUN apt-get update && apt-get install -y --no-install-recommends coreutils jq && rm -rf /var/lib/apt/lists/*
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entry.sh
 
 USER runner
 WORKDIR /sandbox

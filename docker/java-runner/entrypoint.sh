@@ -24,7 +24,7 @@ if [ -f /sandbox/Main.java ]; then
   javac /sandbox/Main.java 2> /sandbox/compile_err.txt || { cat /sandbox/compile_err.txt >&2; exit 3; }
   # run with timeout (3s)
  # run without internal timeout (outer runner handles this)
- exec java -cp /sandbox Main < /sandbox/stdin.txt
+exec java -cp /sandbox Main < /sandbox/stdin.txt
 elif [ -f /sandbox/main.py ]; then
   timeout 5s python3 /sandbox/main.py < /sandbox/stdin.txt
   exit $?

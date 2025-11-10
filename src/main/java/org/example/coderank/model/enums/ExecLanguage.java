@@ -3,8 +3,8 @@ package org.example.coderank.model.enums;
 public enum ExecLanguage {
 
     JAVA("java", "Main.java", new String[]{"javac Main.java"}, new String[]{"java -classpath . Main"}, "coderank/java-runner:latest"),
-    PYTHON("py", "main.py", null, new String[]{"python3 main.py"}, "coderank/python-runner:latest"),
-    CPP("cpp", "main.cpp", new String[]{"g++ -O2 -std=gnu++17 main.cpp -o main"}, new String[]{"./main"}, "coderank/cpp-runner:latest");
+    PYTHON("py", "main.py", null, new String[]{"python3 main.py"}, "coderank/python-runner:latest");
+    //CPP("cpp", "main.cpp", new String[]{"g++ -O2 -std=gnu++17 main.cpp -o main"}, new String[]{"./main"}, "cpp-runner:latest");
 
     private final String code;
     private final String fileName;

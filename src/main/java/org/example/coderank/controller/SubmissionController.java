@@ -78,7 +78,6 @@ public class SubmissionController {
         dto.setExecTimeMs(s.getExecTimeMs());
         dto.setCreatedAt(s.getSubmittedAt());
         dto.setFinishedAt(s.getFinishedAt());
-        // map user/problem minimal fields if needed
         return dto;
     }
 
